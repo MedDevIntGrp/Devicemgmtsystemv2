@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CAC5F90E-CAEE-45D5-8CAF-EF921F1CEE04}</ProjectGuid>
+    <ProjectTypeGuids>{EF7E3281-CD33-11D4-8326-00C04FA0CE8D};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>library</OutputType>
+    <GenericProcessing>true</GenericProcessing>
+    <RootNamespace>DeviceMgmtSystemV2</RootNamespace>
+    <AssemblyName>DeviceMgmtSystemV2</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <BpelCompliance>True</BpelCompliance>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>DeviceMgmt.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.BizTalk.Pipeline.Components, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System">
+      <Name>System</Name>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Name>System.XML</Name>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Name>System.Configuration</Name>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.Pipeline">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.DefaultPipelines">
+      <Name>Microsoft.BizTalk.DefaultPipelines</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.GlobalPropertySchemas">
+      <Name>Microsoft.BizTalk.GlobalPropertySchemas</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.BizTalk.TestTools">
+      <Name>Microsoft.BizTalk.TestTools</Name>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.XLANGs.BaseTypes">
+      <Name>Microsoft.XLANGs.BaseTypes</Name>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="bundle.xsd.cs">
+      <DependentUpon>bundle.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceTwin.xsd.cs">
+      <DependentUpon>DeviceTwin.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="fhir-base.xsd.cs">
+      <DependentUpon>fhir-base.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="fhir-xhtml.xsd.cs">
+      <DependentUpon>fhir-xhtml.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="observation.xsd.cs">
+      <DependentUpon>observation.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="servicerequest.xsd.cs" />
+    <Compile Include="xml.xsd.cs">
+      <DependentUpon>xml.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Schema Include="fhir-base.xsd">
+      <TypeName>fhir_base</TypeName>
+      <Namespace>DeviceMgmtSystem</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="fhir-xhtml.xsd">
+      <TypeName>fhir_xhtml</TypeName>
+      <Namespace>DeviceMgmtSystem</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="observation.xsd">
+      <TypeName>observation</TypeName>
+      <Namespace>DeviceMgmtSystem</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="xml.xsd">
+      <TypeName>xml</TypeName>
+      <Namespace>DeviceMgmtSystem</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+  </ItemGroup>
+  <ItemGroup>
+    <Schema Include="DeviceTwin.xsd">
+      <TypeName>DeviceTwin</TypeName>
+      <Namespace>DeviceMgmtSystem</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+  </ItemGroup>
+  <ItemGroup>
+    <Map Include="DeviceTwinMapToObservation.btm">
+      <TypeName>DeviceTwinMapToObservation</TypeName>
+      <Namespace>DeviceMgmtSystem</Namespace>
+      <SubType>Task</SubType>
+    </Map>
+  </ItemGroup>
+  <ItemGroup>
+    <Map Include="Observations__to_Report.btm">
+      <TypeName>Observations__to_Report</TypeName>
+      <Namespace>DeviceMgmtSystem</Namespace>
+      <SubType>Task</SubType>
+    </Map>
+    <XLang Include="BizObservation.odx">
+      <TypeName>BizObservation</TypeName>
+      <Namespace>DeviceMgmtSystem</Namespace>
+      <SubType>Task</SubType>
+    </XLang>
+    <Content Include="MapDeviceTwinToObservation.xsl">
+      <SubType>Designer</SubType>
+    </Content>
+    <Pipeline Include="ReceiveTwinJSON.btp">
+      <TypeName>ReceiveTwinJSON</TypeName>
+      <Namespace>DeviceMgmtSystem</Namespace>
+      <SubType>Task</SubType>
+    </Pipeline>
+  </ItemGroup>
+  <ItemGroup>
+    <Schema Include="Twin-Reported.xsd">
+      <TypeName>Twin_Reported</TypeName>
+      <Namespace>DeviceMgmtSystem</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="diagnosticreport.xsd">
+      <TypeName>diagnosticreport</TypeName>
+      <Namespace>DeviceMgmtSystem</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <Schema Include="bundle.xsd">
+      <TypeName>bundle</TypeName>
+      <Namespace>DeviceMgmtSystem</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+    <None Include="DeviceMgmt.snk" />
+    <Schema Include="TwinSchemaInput.xsd">
+      <TypeName>TwinSchemaInput</TypeName>
+      <Namespace>DeviceMgmtSystem</Namespace>
+      <SubType>Task</SubType>
+    </Schema>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\BizTalk\BizTalkC.targets" />
+</Project>
